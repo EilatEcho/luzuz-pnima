@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ענבר כהן – ליווי אישי, זוגי ורגשי, ייעוץ מיני וסדנאות. לפעמים כל מה שצריך הוא להסכים להתחיל לזוז פנימה.">
+<meta property="og:title" content="לזוז פנימה · ענבר כהן">
+<meta property="og:image" content="inbar.jpg">
+<title>לזוז פנימה · ענבר כהן</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bellefair&family=Assistant:wght@300;400;600;700;800&display=swap">
+<style>
+/* Layout: corporate-consulting rhythm (top bar · sticky nav · hero slider · overlapping service cards · split sections · filterable grid · CTA band · testimonial slider · contact · footer), RTL */
+:root{
+  --blush:#fbf0eb;      /* page ground */
+  --rose:#c28b85;       /* accent */
+  --taupe:#8f7965;      /* deep accent */
+  --ink:#3b2f2a;        /* text */
+  --muted:#7a6a61;
+  --surface:#ffffff;
+  --line:#ead8cf;
+  --hero-a:#8f7965; --hero-b:#6e5b4c; --on-hero:#fbf0eb;
+  --shadow:0 18px 50px -24px rgba(90,60,45,.35);
+  --display:"Bellefair","Frank Ruhl Libre",Georgia,serif;
+  --body:"Assistant","Segoe UI",Arial,sans-serif;
+  --wrap:1200px;
+  --photo:url("inbar.jpg");
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --blush:#1d1715;--rose:#d6a39d;--taupe:#b59f8b;--ink:#f3e6df;--muted:#c2b1a7;--surface:#28201d;--line:#3d322d;
+  --hero-a:#4a3c33;--hero-b:#2a211d;--on-hero:#fbf0eb;--shadow:0 18px 50px -24px rgba(0,0,0,.7);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --blush:#1d1715;--rose:#d6a39d;--taupe:#b59f8b;--ink:#f3e6df;--muted:#c2b1a7;--surface:#28201d;--line:#3d322d;
+  --hero-a:#4a3c33;--hero-b:#2a211d;--on-hero:#fbf0eb;--shadow:0 18px 50px -24px rgba(0,0,0,.7);color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--blush);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.7;direction:rtl;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:24px}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+
+/* eyebrow like the reference: small caps line + dash */
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:14px;font-weight:700;letter-spacing:.12em;color:var(--rose)}
+.eyebrow::before{content:"";width:34px;height:2px;background:currentColor}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;font-family:var(--body);font-weight:700;font-size:15px;letter-spacing:.06em;border:2px solid var(--rose);background:var(--rose);color:#fff;cursor:pointer;transition:background .25s,color .25s,transform .25s}
+.btn:hover{background:transparent;color:var(--rose)}
+.btn.ghost{background:transparent;color:var(--on-hero);border-color:color-mix(in srgb,var(--on-hero) 60%,transparent)}
+.btn.ghost:hover{background:var(--on-hero);color:var(--hero-b)}
+.btn svg{width:16px;height:16px;transform:scaleX(-1)}
+
+/* top bar */
+.topbar{background:var(--taupe);color:#fff;font-size:14px}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:8px;flex-wrap:wrap}
+.topbar .info{display:flex;gap:24px;flex-wrap:wrap}
+.topbar a{display:inline-flex;gap:8px;align-items:center;opacity:.95}
+.topbar svg{width:15px;height:15px}
+.social{display:flex;gap:6px}
+.social a{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;transition:background .2s}
+.social a:hover{background:rgba(255,255,255,.18)}
+
+/* header */
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--blush) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+header.nav.scrolled{box-shadow:var(--shadow)}
+header.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:16px;transition:padding .3s}
+header.nav.scrolled .wrap{padding-block:10px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo svg{width:44px;height:44px}
+.logo b{display:block;font-family:var(--display);font-size:28px;font-weight:400;line-height:1}
+.logo small{display:block;font-size:12px;letter-spacing:.14em;color:var(--muted)}
+nav.menu ul{list-style:none;margin:0;padding:0;display:flex;gap:30px}
+nav.menu a{font-weight:600;font-size:16px;position:relative;padding-block:6px}
+nav.menu a::after{content:"";position:absolute;inset-inline:0;bottom:0;height:2px;background:var(--rose);transform:scaleX(0);transition:transform .25s}
+nav.menu a:hover::after{transform:scaleX(1)}
+.nav-cta{padding:12px 22px}
+.burger{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--ink)}
+.burger svg{width:28px;height:28px}
+
+/* hero slider */
+.hero{position:relative;background:var(--hero-b) var(--photo) 30% 30%/cover no-repeat;color:var(--on-hero);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(270deg,color-mix(in srgb,var(--hero-b) 92%,transparent) 0%,color-mix(in srgb,var(--hero-a) 78%,transparent) 42%,color-mix(in srgb,var(--hero-a) 10%,transparent) 72%,transparent 100%)}
+.hero .slides,.hero .hero-dots{position:relative;z-index:2}
+.hero .slides{position:relative;min-height:600px}
+.slide{position:absolute;inset:0;display:flex;align-items:center;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility .9s}
+.slide.active{opacity:1;visibility:visible;position:relative}
+.slide .wrap{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-block:100px 170px}
+.slide .copy{min-width:0}
+.slide .eyebrow{color:var(--on-hero);opacity:.9}
+.slide h1{font-size:clamp(40px,5.6vw,74px);margin:22px 0 22px}
+.slide h1 em{font-style:normal;color:#f2c9c2}
+.slide p.lead{font-size:20px;max-width:34em;opacity:.92;margin-bottom:34px}
+.slide .actions{display:flex;gap:14px;flex-wrap:wrap}
+.slide .copy > *{transform:translateY(0);transition:transform .9s ease}
+.slide:not(.active) .copy > *{transform:translateY(18px)}
+/* the "inward" mark */
+.rings{position:relative;aspect-ratio:1;width:100%;max-width:440px;justify-self:center}
+.rings span{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(251,240,235,.45);animation:inward 9s linear infinite}
+.rings span:nth-child(2){animation-delay:-1.8s}.rings span:nth-child(3){animation-delay:-3.6s}
+.rings span:nth-child(4){animation-delay:-5.4s}.rings span:nth-child(5){animation-delay:-7.2s}
+.rings .core{position:absolute;inset:38%;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f6d6cf,var(--rose) 70%);box-shadow:0 0 80px 10px rgba(242,201,194,.35)}
+.rings .tag{position:absolute;bottom:4%;inset-inline-start:-4%;background:var(--blush);color:var(--ink);padding:14px 20px;box-shadow:var(--shadow);font-size:15px;line-height:1.4}
+.rings .tag b{display:block;font-family:var(--display);font-size:22px;font-weight:400;color:var(--rose)}
+@keyframes inward{0%{transform:scale(1);opacity:0}15%{opacity:1}100%{transform:scale(.38);opacity:0}}
+.hero .wave{position:absolute;inset:0;pointer-events:none;opacity:.18}
+.hero .hero-dots{position:absolute;bottom:120px;inset-inline-start:max(24px,calc((100% - var(--wrap))/2 + 24px));display:flex;gap:10px;z-index:3}
+.hero-dots button{width:34px;height:4px;border:0;padding:0;background:rgba(251,240,235,.35);cursor:pointer;transition:background .3s,width .3s}
+.hero-dots button.on{background:var(--on-hero);width:56px}
+
+/* service highlights overlapping hero */
+.services{position:relative;z-index:5;margin-top:-80px}
+.svc-grid{display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface);box-shadow:var(--shadow)}
+.svc{padding:36px 26px 34px;border-inline-start:1px solid var(--line);position:relative;transition:background .3s;min-width:0}
+.svc:first-child{border-inline-start:0}
+.svc::after{content:"";position:absolute;top:0;inset-inline:0;height:3px;background:var(--rose);transform:scaleX(0);transform-origin:right;transition:transform .35s}
+.svc:hover::after{transform:scaleX(1)}
+.svc .ico{width:52px;height:52px;color:var(--rose);margin-bottom:18px}
+.svc h3{font-size:25px;margin-bottom:8px}
+.svc p{font-size:16px;color:var(--muted);line-height:1.6}
+
+section{padding-block:110px}
+.head{max-width:680px;margin-bottom:56px}
+.head.center{text-align:center;margin-inline:auto}
+.head h2{font-size:clamp(34px,4vw,54px);margin-top:16px}
+.head p{color:var(--muted);margin-top:16px}
+
+/* intro "maybe" section */
+.intro .grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.maybes{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.maybes li{display:flex;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);font-size:20px}
+.maybes li span{font-family:var(--display);color:var(--rose);font-size:22px;flex:none}
+.intro .quote{font-family:var(--display);font-size:clamp(30px,3.4vw,44px);line-height:1.25;margin-top:28px;color:var(--taupe)}
+
+/* about */
+.about{background:var(--surface)}
+.about .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+.portrait{position:relative;isolation:isolate;max-width:440px;width:100%;justify-self:center}
+.portrait .arch{aspect-ratio:4/5;border-radius:220px 220px 0 0;background:var(--taupe) var(--photo) 34% 0/auto 128% no-repeat;position:relative;overflow:hidden}
+.portrait .frame{position:absolute;inset:22px -22px -22px 22px;border:2px solid var(--rose);border-radius:220px 220px 0 0;z-index:-1}
+.portrait .badge{position:absolute;bottom:34px;inset-inline-end:-30px;background:var(--taupe);color:#fff;padding:20px 24px;max-width:220px;line-height:1.35;box-shadow:var(--shadow)}
+.portrait .badge b{font-family:var(--display);font-size:40px;font-weight:400;display:block;line-height:1}
+.about .name{font-family:var(--display);font-size:24px;color:var(--rose);margin-top:8px}
+.about blockquote{margin:26px 0;padding-inline-start:22px;border-inline-start:3px solid var(--rose);font-size:21px;font-weight:600}
+.creds{list-style:none;padding:0;margin:0 0 36px;display:grid;gap:12px}
+.creds li{display:flex;gap:14px;align-items:flex-start}
+.creds svg{flex:none;width:22px;height:22px;margin-top:4px;color:var(--rose)}
+
+/* values band */
+.values{background:linear-gradient(120deg,var(--hero-a),var(--hero-b));color:var(--on-hero);padding-block:90px}
+.values .head .eyebrow{color:var(--on-hero)}
+.val-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.val{padding:10px 30px;border-inline-start:1px solid rgba(251,240,235,.25);min-width:0}
+.val:first-child{border-inline-start:0;padding-inline-start:0}
+.val h3{font-size:40px;margin-bottom:10px}
+.val p{opacity:.88;font-size:17px}
+.val .ico{width:40px;height:40px;margin-bottom:16px;color:#f2c9c2}
+
+/* workshops */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px}
+.filters button{font:600 15px var(--body);padding:10px 20px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;transition:all .2s}
+.filters button.on,.filters button:hover{background:var(--taupe);border-color:var(--taupe);color:#fff}
+.ws-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.ws{background:var(--surface);padding:34px 28px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;min-width:0;display:flex;flex-direction:column}
+.ws:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.ws .cat{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--rose)}
+.ws h3{font-size:28px;margin:12px 0 10px}
+.ws p{color:var(--muted);font-size:16px;flex:1}
+.ws .more{margin-top:22px;font-weight:700;font-size:14px;letter-spacing:.06em;display:inline-flex;gap:8px;align-items:center;color:var(--taupe)}
+.ws .more svg{width:14px;height:14px;transform:scaleX(-1);transition:transform .2s}
+.ws:hover .more svg{transform:scaleX(-1) translateX(4px)}
+.ws::before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;border:1px solid var(--line);inset-inline-end:-50px;top:-50px;transition:transform .5s}
+.ws:hover::before{transform:scale(1.5)}
+.ws.hide{display:none}
+.ws-note{margin-top:36px;color:var(--muted);text-align:center}
+
+/* CTA band */
+.cta{background:var(--rose);color:#fff;padding-block:80px;position:relative;overflow:hidden}
+.cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;position:relative}
+.cta h2{font-size:clamp(34px,4vw,52px)}
+.cta p{font-size:20px;max-width:36em;margin-top:10px;opacity:.95}
+.cta .btn{background:#fff;color:#8a5a54;border-color:#fff}
+.cta .btn:hover{background:transparent;color:#fff}
+.cta::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;border:1px solid rgba(255,255,255,.3);inset-inline-start:-180px;top:-240px;box-shadow:0 0 0 60px rgba(255,255,255,.06),0 0 0 130px rgba(255,255,255,.04)}
+
+/* testimonials */
+.testi .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px;align-items:center}
+.t-card{background:var(--surface);padding:56px 56px 44px;position:relative;box-shadow:var(--shadow)}
+.t-card .mark{position:absolute;top:-30px;inset-inline-start:46px;width:64px;height:64px;background:var(--rose);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:64px;line-height:1;padding-top:20px}
+.t-slide{display:none}
+.t-slide.active{display:block;animation:fade .6s ease}
+@keyframes fade{from{opacity:.2;transform:translateY(8px)}to{opacity:1;transform:none}}
+.t-slide p{font-size:21px;line-height:1.75}
+.t-slide cite{display:block;margin-top:26px;font-style:normal;font-weight:700;color:var(--taupe)}
+.t-nav{display:flex;gap:10px;margin-top:30px}
+.t-nav button{width:48px;height:48px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center;transition:all .2s}
+.t-nav button:hover{background:var(--rose);border-color:var(--rose);color:#fff}
+.t-nav svg{width:18px;height:18px}
+.t-count{font-family:var(--display);font-size:92px;line-height:1;color:var(--rose);margin-top:20px}
+.t-count small{font-size:28px;color:var(--muted)}
+
+/* contact */
+.contact{background:var(--surface)}
+.contact .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:70px}
+.c-list{display:grid;gap:0;margin-top:30px}
+.c-item{display:flex;gap:18px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+.c-item .ic{width:52px;height:52px;flex:none;display:grid;place-items:center;background:var(--blush);color:var(--rose)}
+.c-item .ic svg{width:22px;height:22px}
+.c-item small{display:block;font-size:13px;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.c-item b{font-size:19px;direction:ltr;unicode-bidi:isolate}
+form.f{background:var(--blush);padding:44px;display:grid;gap:18px;grid-template-columns:1fr 1fr}
+form.f h3{grid-column:1/-1;font-size:32px}
+form.f label{display:grid;gap:6px;font-size:14px;font-weight:700;min-width:0}
+form.f .full{grid-column:1/-1}
+form.f input,form.f select,form.f textarea{font:400 17px var(--body);padding:13px 14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);width:100%;border-radius:0}
+form.f textarea{min-height:110px;resize:vertical}
+form.f input:focus,form.f select:focus,form.f textarea:focus{outline:none;border-color:var(--rose)}
+.f-out{grid-column:1/-1;font-size:16px}
+.f-out a{color:var(--rose);font-weight:700;text-decoration:underline}
+
+footer{background:var(--hero-b);color:#e9dbd4;padding-block:80px 0;font-size:16px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer h4{font-family:var(--display);font-weight:400;font-size:24px;color:#fff;margin:0 0 18px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+footer a:hover{color:#f2c9c2}
+footer .logo b{color:#fff}
+footer .logo small{color:#cbb8ae}
+footer .bottom{margin-top:60px;border-top:1px solid rgba(255,255,255,.12);padding-block:22px;font-size:14px;color:#bba89e}
+
+.wa-float{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom,0px));left:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:#2fb463;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.4);transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px}
+
+/* responsive */
+@media (max-width:1080px){
+  .svc-grid{grid-template-columns:repeat(3,1fr)}
+  .svc:nth-child(4){border-inline-start:0}
+  .svc:nth-child(n+4){border-top:1px solid var(--line)}
+  .ws-grid{grid-template-columns:repeat(2,1fr)}
+  footer .cols{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  nav.menu{position:fixed;inset:0 0 auto 0;top:calc(env(safe-area-inset-top,0px) + 70px);background:var(--blush);border-bottom:1px solid var(--line);display:none;padding:10px 24px 24px}
+  nav.menu.open{display:block}
+  nav.menu ul{flex-direction:column;gap:4px}
+  nav.menu a{display:block;padding:10px 0;font-size:18px}
+  .burger{display:block}
+  .nav-cta{display:none}
+  .slide .wrap{grid-template-columns:1fr;padding-block:60px 140px}
+  .hero{background-position:32% 20%}
+  .hero::before{background:linear-gradient(0deg,color-mix(in srgb,var(--hero-b) 94%,transparent) 0%,color-mix(in srgb,var(--hero-a) 80%,transparent) 55%,color-mix(in srgb,var(--hero-a) 25%,transparent) 100%)}
+  .slide .wrap{padding-block:220px 140px}
+  .intro .grid,.about .grid,.testi .grid,.contact .grid{grid-template-columns:1fr;gap:50px}
+  .val-grid{grid-template-columns:1fr 1fr;gap:34px 0}
+  .val:nth-child(3){border-inline-start:0;padding-inline-start:0}
+  .portrait .badge{inset-inline-end:0}
+  section{padding-block:80px}
+}
+@media (max-width:600px){
+  body{font-size:17px}
+  .wrap{padding-inline:18px}
+  .topbar .info a.mail{display:none}
+  .svc-grid{grid-template-columns:1fr}
+  .svc{border-inline-start:0!important;border-top:1px solid var(--line)}
+  .svc:first-child{border-top:0}
+  .ws-grid{grid-template-columns:1fr}
+  .val-grid{grid-template-columns:1fr}
+  .val{border-inline-start:0!important;padding-inline:0!important}
+  form.f{grid-template-columns:1fr;padding:28px 20px}
+  .t-card{padding:50px 24px 30px}
+  footer .cols{grid-template-columns:1fr}
+  .portrait .frame{inset:14px -10px -14px 10px}
+  .hero .slides{min-height:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rings span:nth-child(1){transform:scale(1)}.rings span:nth-child(2){transform:scale(.85)}.rings span:nth-child(3){transform:scale(.7)}.rings span:nth-child(4){transform:scale(.56)}.rings span:nth-child(5){display:none}
+}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></g></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8.5c0-.3.2-.5.5-.5Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="m7.5 12.2 3 3 6-6.4" stroke-linecap="round" stroke-linejoin="round"/></g></symbol>
+  </defs>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="info">
+      <a href="https://wa.me/972546444361" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg> 054-6444361</a>
+      <span>ליווי אישי · זוגי · רגשי · ייעוץ מיני</span>
+    </div>
+    <div class="social">
+      <a href="https://www.instagram.com/inbar0406" target="_blank" rel="noopener" aria-label="אינסטגרם"><svg width="16" height="16"><use href="#i-ig"/></svg></a>
+      <a href="https://www.facebook.com/search/top?q=Inbar%20Cohen" target="_blank" rel="noopener" aria-label="פייסבוק"><svg width="16" height="16"><use href="#i-fb"/></svg></a>
+      <a href="https://wa.me/972546444361" target="_blank" rel="noopener" aria-label="וואטסאפ"><svg width="16" height="16"><use href="#i-wa"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="לזוז פנימה, לעמוד הבית">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#c28b85" stroke-width="1.6"><circle cx="24" cy="24" r="22"/><circle cx="24" cy="24" r="15" stroke="#8f7965"/><circle cx="24" cy="24" r="8"/></g><circle cx="24" cy="24" r="3" fill="#c28b85"/></svg>
+      <span><b>לזוז פנימה</b><small>ענבר כהן</small></span>
+    </a>
+    <nav class="menu" id="menu" aria-label="ניווט ראשי">
+      <ul>
+        <li><a href="#top">בית</a></li>
+        <li><a href="#about">אודות</a></li>
+        <li><a href="#services">שירותים</a></li>
+        <li><a href="#workshops">סדנאות</a></li>
+        <li><a href="#testimonials">המלצות</a></li>
+        <li><a href="#contact">צור קשר</a></li>
+      </ul>
+    </nav>
+    <a class="btn nav-cta" href="#contact">לשיחת היכרות</a>
+    <button class="burger" id="burger" aria-label="פתיחת תפריט" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<div class="hero" aria-roledescription="carousel">
+  <svg class="wave" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#fbf0eb" stroke-width="1.2"><path d="M0 420C240 340 420 520 720 430s480-160 720-60"/><path d="M0 460C260 380 440 560 740 470s460-170 700-70"/><path d="M0 500C280 420 460 600 760 510s440-180 680-80"/></g></svg>
+  <div class="slides" id="slides">
+    <div class="slide active">
+      <div class="wrap">
+        <div class="copy">
+          <span class="eyebrow">ליווי אישי, זוגי ורגשי</span>
+          <h1>לפעמים כל מה שצריך הוא <em>להסכים להתחיל לזוז פנימה.</em></h1>
+          <p class="lead">מרחב בטוח ומכיל לחיבור לעצמכם, לזוגיות שלכם ולגוף שלכם. בעדינות, בנוכחות ובאמונה מלאה בכם.</p>
+          <div class="actions">
+            <a class="btn" href="#contact">לשיחת היכרות <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn ghost" href="#services">לשירותים</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="wrap">
+        <div class="copy">
+          <span class="eyebrow">אולי הגיע הזמן</span>
+          <h1>כאן מתחיל <em>המסע פנימה.</em></h1>
+          <p class="lead">אולי אתם מרגישים תקועים. אולי משהו בזוגיות כבר לא מרגיש כמו פעם. ואולי פשוט הגיע הזמן להקשיב למה שמבקש מקום בתוככם.</p>
+          <div class="actions">
+            <a class="btn" href="#about">נעים להכיר <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn ghost" href="#contact">צרו קשר</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="wrap">
+        <div class="copy">
+          <span class="eyebrow">סדנאות והרצאות</span>
+          <h1>מפגשים <em>מעוררי השראה</em> לארגונים, קבוצות וקהילות.</h1>
+          <p class="lead">הרצאות חווייתיות שמשלבות גוף, תודעה ותנועה עדינה. כל סדנה מותאמת לקהל ולמטרות שלכם.</p>
+          <div class="actions">
+            <a class="btn" href="#workshops">לכל הסדנאות <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn ghost" href="#contact">להזמנת סדנה</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots" id="dots" role="tablist" aria-label="שקופיות"></div>
+</div>
+
+<!-- SERVICES -->
+<div class="services" id="services">
+  <div class="wrap">
+    <div class="svc-grid">
+      <article class="svc">
+        <svg class="ico" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="26" cy="16" r="8"/><path d="M10 46c0-9 7-16 16-16s16 7 16 16"/><circle cx="26" cy="26" r="24" stroke-dasharray="3 5"/></svg>
+        <h3>ליווי אישי</h3><p>תהליך אישי לחיבור לעצמכם, חיזוק הביטחון ויצירת שינוי משמעותי.</p>
+      </article>
+      <article class="svc">
+        <svg class="ico" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="19" cy="26" r="13"/><circle cx="33" cy="26" r="13"/></svg>
+        <h3>ליווי זוגי</h3><p>בניית תקשורת מקרבת, אמון וצמיחה משותפת לשני בני הזוג.</p>
+      </article>
+      <article class="svc">
+        <svg class="ico" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M26 44S8 33 8 20a9 9 0 0 1 18-3 9 9 0 0 1 18 3c0 13-18 24-18 24Z"/><path d="M14 24h7l3-5 4 10 3-5h7"/></svg>
+        <h3>ליווי רגשי</h3><p>התמודדות עם אתגרי החיים מתוך הקשבה וכלים מעשיים.</p>
+      </article>
+      <article class="svc">
+        <svg class="ico" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M26 6c6 8 14 13 14 23a14 14 0 0 1-28 0c0-10 8-15 14-23Z"/><path d="M26 22c3 4 6 6 6 10a6 6 0 0 1-12 0c0-4 3-6 6-10Z"/></svg>
+        <h3>ייעוץ מיני</h3><p>יצירת אינטימיות, פתיחות וביטחון בתוך מערכות יחסים.</p>
+      </article>
+      <article class="svc">
+        <svg class="ico" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="26" cy="12" r="5"/><circle cx="11" cy="22" r="4"/><circle cx="41" cy="22" r="4"/><path d="M16 44c0-7 4-14 10-14s10 7 10 14M4 40c0-5 3-9 7-9s6 2 7 4M48 40c0-5-3-9-7-9s-6 2-7 4"/></svg>
+        <h3>סדנאות והרצאות</h3><p>מפגשים מעוררי השראה לארגונים, קבוצות וקהילות.</p>
+      </article>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow">אם הגעתם לכאן</span>
+      <p class="quote">ואולי פשוט הגיע הזמן להקשיב למה שמבקש מקום בתוככם.</p>
+      <p style="margin-top:22px;color:var(--muted)">כל שינוי אמיתי מתחיל בהסכמה קטנה: לעצור, להקשיב, ולתת למה שבפנים מקום. אני כאן כדי ללוות אתכם בדרך.</p>
+      <p style="margin-top:30px"><a class="btn" href="#contact">בואו נתחיל <svg><use href="#i-arrow"/></svg></a></p>
+    </div>
+    <ul class="maybes">
+      <li><span>אולי</span>אתם מרגישים תקועים.</li>
+      <li><span>אולי</span>אתם מחפשים שינוי.</li>
+      <li><span>אולי</span>משהו בזוגיות כבר לא מרגיש כמו פעם.</li>
+      <li><span>אולי</span>איבדתם את עצמכם בתוך השגרה.</li>
+      <li><span>ואולי</span>הגיע הזמן לזוז פנימה.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap grid">
+    <div class="portrait">
+      <div class="frame"></div>
+      <div class="arch" role="img" aria-label="ענבר כהן"></div>
+      <div class="badge"><b>5</b>הכשרות מקצועיות בתחומי גוף, נפש וזוגיות</div>
+    </div>
+    <div>
+      <span class="eyebrow">נעים להכיר</span>
+      <h2 style="font-size:clamp(36px,4.2vw,56px);margin-top:16px">ענבר כהן</h2>
+      <p class="name">יועצת מינית · מאמנת רגשית · מנחת סדנאות</p>
+      <blockquote>אני מאמינה שלכל אדם יש את היכולת ליצור שינוי אמיתי כשהוא פועל מתוך חיבור לעצמו.</blockquote>
+      <h3 style="font-size:26px;margin-bottom:16px">השכלה והכשרות מקצועיות</h3>
+      <ul class="creds">
+        <li><svg><use href="#i-check"/></svg>יועצת מינית, בוגרת מכון פתרונות</li>
+        <li><svg><use href="#i-check"/></svg>מאמנת רגשית בשיטת MBT</li>
+        <li><svg><use href="#i-check"/></svg>בוגרת שיטת ימימה</li>
+        <li><svg><use href="#i-check"/></svg>תואר שני (M.A.) במשפטים</li>
+        <li><svg><use href="#i-check"/></svg>תואר ראשון (B.Ed.) בחינוך גופני, המכללה האקדמית בווינגייט</li>
+      </ul>
+      <a class="btn" href="#contact">לקביעת פגישה <svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">הערכים שלי</span><h2>על מה בנוי המרחב שלנו</h2></div>
+    <div class="val-grid">
+      <div class="val"><svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 30c-3-2-5-6-5-10a11 11 0 0 1 22 0c0 5-4 6-5 9s-2 6-6 6"/><path d="M16 20a4 4 0 0 1 8 0"/></svg><h3>הקשבה</h3><p>לראות את האדם שמולי באמת, מעבר למילים.</p></div>
+      <div class="val"><svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="20" cy="20" r="15"/><circle cx="20" cy="20" r="4" fill="currentColor"/></svg><h3>אותנטיות</h3><p>להיות נאמנים לעצמנו בכל שלב בדרך.</p></div>
+      <div class="val"><svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 5 7 10v9c0 8 6 14 13 16 7-2 13-8 13-16v-9Z"/><path d="m14 20 4 4 8-8"/></svg><h3>אמון</h3><p>מרחב בטוח ומכיל שמאפשר שינוי אמיתי.</p></div>
+      <div class="val"><svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 36V18"/><path d="M20 22c0-7-6-11-12-11 0 7 5 11 12 11ZM20 18c0-7 5-12 12-12 0 7-5 12-12 12Z"/></svg><h3>צמיחה</h3><p>להפוך תובנות עמוקות למציאות חיה ונושמת.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOPS -->
+<section id="workshops">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">סדנאות והרצאות</span><h2>מפגשים שמזיזים משהו בפנים</h2><p>הרצאות חווייתיות שמחברות תוכן מנטלי, נשימה ותנועה. לארגונים, לקבוצות נשים ולקהילות.</p></div>
+    <div class="filters" id="filters" role="group" aria-label="סינון סדנאות">
+      <button class="on" data-f="all">הכל</button>
+      <button data-f="self">חיבור לעצמי</button>
+      <button data-f="body">גוף ותנועה</button>
+      <button data-f="couple">זוגיות ואינטימיות</button>
+    </div>
+    <div class="ws-grid" id="wsgrid">
+      <article class="ws" data-c="self"><span class="cat">חיבור לעצמי</span><h3>לזוז פנימה</h3><p>חיבור לעצמי דרך תנועה, רגש וכלים פרקטיים.</p><a class="more" href="#contact">להזמנה <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="ws" data-c="body"><span class="cat">גוף ותנועה</span><h3>תנועה שמשחררת</h3><p>איך הגוף והנפש עובדים יחד.</p><a class="more" href="#contact">להזמנה <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="ws" data-c="self"><span class="cat">חיבור לעצמי</span><h3>לבחור בי</h3><p>גבולות, ביטחון עצמי והקשבה פנימית.</p><a class="more" href="#contact">להזמנה <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="ws" data-c="self"><span class="cat">חיבור לעצמי</span><h3>לצאת מהטייס האוטומטי</h3><p>לשבור דפוסים וליצור שינוי אמיתי.</p><a class="more" href="#contact">להזמנה <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="ws" data-c="body"><span class="cat">גוף ותנועה</span><h3>הגוף מספר את הסיפור</h3><p>מה הגוף שלנו מנסה להגיד לנו.</p><a class="more" href="#contact">להזמנה <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="ws" data-c="couple"><span class="cat">זוגיות ואינטימיות</span><h3>זוגיות טובה מתחילה בתקשורת</h3><p>כלים לתקשורת מקרבת ובניית קשר בריא.</p><a class="more" href="#contact">להזמנה <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="ws" data-c="couple"><span class="cat">זוגיות ואינטימיות</span><h3>אינטימיות ומיניות בריאה</h3><p>שיח פתוח, רגיש ומכבד על אינטימיות וקרבה.</p><a class="more" href="#contact">להזמנה <svg><use href="#i-arrow"/></svg></a></article>
+      <article class="ws" data-c="body"><span class="cat">גוף ותנועה</span><h3>לנשום. לעצור. לחיות.</h3><p>כלים פשוטים להתמודדות עם עומס ולחץ.</p><a class="more" href="#contact">להזמנה <svg><use href="#i-arrow"/></svg></a></article>
+    </div>
+    <p class="ws-note">כל סדנה ניתנת להתאמה לארגונים, לקבוצות ולקהילות.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="wrap">
+    <div>
+      <h2>הגיע הזמן לזוז פנימה.</h2>
+      <p>אני כאן כדי ללוות אתכם בדרך לשינוי אמיתי, בעדינות, בנוכחות ובאמונה מלאה בכם.</p>
+    </div>
+    <a class="btn" href="https://wa.me/972546444361" target="_blank" rel="noopener"><svg style="transform:none"><use href="#i-wa"/></svg> דברו איתי בוואטסאפ</a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testi" id="testimonials">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow">מה אומרים עליי</span>
+      <h2 style="font-size:clamp(34px,4vw,54px);margin-top:16px">מילים מהדרך</h2>
+      <div class="t-count" aria-live="polite"><span id="tnum">01</span><small> / 03</small></div>
+      <div class="t-nav">
+        <button id="tprev" aria-label="להמלצה הקודמת"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+        <button id="tnext" aria-label="להמלצה הבאה"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
+      </div>
+    </div>
+    <div class="t-card">
+      <div class="mark" aria-hidden="true">”</div>
+      <div class="t-slide active"><p>ענברי, אהובה שלי… הליווי שלך פגש אותי במקום מאוד עמוק ומזכיר לי את הדרך שאני עושה ואת מי שאני בוחרת להיות בתוכה, תהליך שבו לנצח תהיי חלק מבחינתי.</p><cite>ס׳, 33</cite></div>
+      <div class="t-slide"><p>בעזרת האימון איתך, אני מוצא עצמי בוחר יותר כיצד להגיב במודע לדברים שקורים, אני מסוגל לייצר השהייה לפני תגובה (דבר שלא הצלחתי בעבר) ואני נמצא במודעות וערנות רבה יותר מהיי פעם.</p><cite>א׳, 43</cite></div>
+      <div class="t-slide"><p>יחד עם ענבר כהן יצאנו לחוויה של לזוז פנימה, חוויה שכולה חיבור, תנועה ונוכחות נשית במיטבה. זה היה ערב מושלם ששילב גוף, תודעה ותנועה עדינה, הרצאה חווייתית שחיברה תוכן מנטלי, נשימה ותזוזה אנרגטית והכל באווירה נעימה, עוטפת ומשחררת.</p><cite>נעמי, מנהלת פורום נשים</cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap grid">
+    <div>
+      <span class="eyebrow">צרו קשר</span>
+      <h2 style="font-size:clamp(34px,4vw,54px);margin-top:16px">בואו נדבר</h2>
+      <p style="color:var(--muted);margin-top:14px">שיחת היכרות קצרה היא הצעד הראשון. כתבו לי ונמצא יחד את הדרך שמתאימה לכם.</p>
+      <div class="c-list">
+        <a class="c-item" href="https://wa.me/972546444361" target="_blank" rel="noopener"><span class="ic"><svg><use href="#i-wa"/></svg></span><span><small>וואטסאפ / טלפון</small><b>054-6444361</b></span></a>
+        <a class="c-item" href="https://www.instagram.com/inbar0406" target="_blank" rel="noopener"><span class="ic"><svg><use href="#i-ig"/></svg></span><span><small>אינסטגרם</small><b>@inbar0406</b></span></a>
+        <a class="c-item" href="https://www.facebook.com/search/top?q=Inbar%20Cohen" target="_blank" rel="noopener"><span class="ic"><svg><use href="#i-fb"/></svg></span><span><small>פייסבוק</small><b>Inbar Cohen</b></span></a>
+      </div>
+    </div>
+    <form class="f" id="form" name="contact" method="POST" action="https://formsubmit.co/inbaryamshon1@gmail.com" novalidate>
+      <p hidden><label>אל תמלאו: <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+      <h3>השאירו פרטים</h3>
+      <label for="fname">שם מלא<input id="fname" name="name" required autocomplete="name"></label>
+      <label for="fphone">טלפון<input id="fphone" name="phone" type="tel" required autocomplete="tel"></label>
+      <label class="full" for="fsvc">במה אפשר לעזור?
+        <select id="fsvc" name="svc">
+          <option>ליווי אישי</option><option>ליווי זוגי</option><option>ליווי רגשי</option><option>ייעוץ מיני</option><option>סדנה / הרצאה</option>
+        </select></label>
+      <label class="full" for="fmsg">כמה מילים (לא חובה)<textarea id="fmsg" name="msg"></textarea></label>
+      <div class="full"><button class="btn" type="submit" id="fbtn">שליחה <svg><use href="#i-arrow"/></svg></button></div>
+      <p class="f-out" id="fout" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="logo" href="#top"><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="none" stroke="#e3b2ab" stroke-width="1.6"><circle cx="24" cy="24" r="22"/><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="8"/></g><circle cx="24" cy="24" r="3" fill="#e3b2ab"/></svg><span><b>לזוז פנימה</b><small>ענבר כהן</small></span></a>
+        <p style="margin-top:18px;max-width:28em">ליווי אישי, זוגי ורגשי, ייעוץ מיני וסדנאות. מרחב בטוח לשינוי אמיתי.</p>
+      </div>
+      <div><h4>ניווט</h4><ul><li><a href="#about">אודות</a></li><li><a href="#services">שירותים</a></li><li><a href="#workshops">סדנאות</a></li><li><a href="#testimonials">המלצות</a></li></ul></div>
+      <div><h4>שירותים</h4><ul><li>ליווי אישי</li><li>ליווי זוגי</li><li>ליווי רגשי</li><li>ייעוץ מיני</li><li>סדנאות והרצאות</li></ul></div>
+      <div><h4>יצירת קשר</h4><ul><li><a href="https://wa.me/972546444361" target="_blank" rel="noopener" dir="ltr">054-6444361</a></li><li><a href="https://www.instagram.com/inbar0406" target="_blank" rel="noopener">אינסטגרם: inbar0406</a></li><li>פייסבוק: Inbar Cohen</li></ul></div>
+    </div>
+  </div>
+  <div class="bottom"><div class="wrap">© 2026 לזוז פנימה · ענבר כהן. כל הזכויות שמורות.</div></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/972546444361" target="_blank" rel="noopener" aria-label="שליחת הודעה בוואטסאפ"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+(function(){
+  // sticky header shadow
+  var nav=document.getElementById('nav');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>40)},{passive:true});
+  // mobile menu
+  var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){var o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A'){menu.classList.remove('open');burger.setAttribute('aria-expanded',false)}});
+
+  // hero slider
+  var slides=[].slice.call(document.querySelectorAll('.slide')),dots=document.getElementById('dots'),cur=0,timer;
+  slides.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','שקופית '+(i+1));b.addEventListener('click',function(){go(i);restart()});dots.appendChild(b)});
+  function go(i){slides[cur].classList.remove('active');cur=(i+slides.length)%slides.length;slides[cur].classList.add('active');
+    [].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===cur)})}
+  function restart(){clearInterval(timer);if(!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(function(){go(cur+1)},7000)}
+  go(0);restart();
+
+  // workshop filters
+  var fb=document.querySelectorAll('#filters button'),ws=document.querySelectorAll('.ws');
+  fb.forEach(function(b){b.addEventListener('click',function(){
+    fb.forEach(function(x){x.classList.toggle('on',x===b)});
+    ws.forEach(function(w){w.classList.toggle('hide',b.dataset.f!=='all'&&w.dataset.c!==b.dataset.f)});
+  })});
+
+  // testimonials
+  var ts=document.querySelectorAll('.t-slide'),ti=0,tnum=document.getElementById('tnum');
+  function tgo(i){ts[ti].classList.remove('active');ti=(i+ts.length)%ts.length;ts[ti].classList.add('active');tnum.textContent='0'+(ti+1)}
+  document.getElementById('tnext').addEventListener('click',function(){tgo(ti+1)});
+  document.getElementById('tprev').addEventListener('click',function(){tgo(ti-1)});
+
+  // form -> FormSubmit: email to Inbar
+  var form=document.getElementById('form'),fbtn=document.getElementById('fbtn');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var el=form.elements,n=el.namedItem('name').value.trim(),p=el.namedItem('phone').value.trim(),m=el.namedItem('msg').value.trim(),out=document.getElementById('fout');
+    if(!n||!p){out.textContent='כדי שאוכל לחזור אליכם, מלאו שם וטלפון.';return}
+    fbtn.disabled=true;out.textContent='שולח…';
+    var data={name:n,phone:p,service:el.namedItem('svc').value,message:m||'-',_honey:el.namedItem('_honey').value,_subject:'פנייה חדשה מהאתר – '+n,_template:'table',_captcha:'false'};
+    fetch('https://formsubmit.co/ajax/inbaryamshon1@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){if(j&&String(j.success)==='false')throw 0;form.reset();out.textContent='תודה! הפרטים התקבלו, ואחזור אליכם בהקדם.';})
+      .catch(function(){
+        out.textContent='לא הצלחנו לשלוח כרגע. נסו שוב בעוד רגע, או התקשרו ל-054-6444361.';
+      })
+      .finally(function(){fbtn.disabled=false});
+  });
+})();
+</script>
+
+</body>
+</html>
